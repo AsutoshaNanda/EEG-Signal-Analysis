@@ -24,11 +24,11 @@ In this project , I am using Preprocessed CHB-MIT Scalp EEG Database.
 
 Both datasets were used to classify EEG signals into three states:
 
-Ictal – During a seizure.
+1.> Ictal – During a seizure.
 
-Preictal – Just before a seizure.
+2.> Preictal – Just before a seizure.
 
-Interictal – Between seizures.
+3.> Interictal – Between seizures.
 
 ### Time and Frequency Domain Signals
 
