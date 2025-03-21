@@ -25,14 +25,16 @@ In this project , I am using Preprocessed CHB-MIT Scalp EEG Database.
 Both datasets were used to classify EEG signals into three states:
 
 Ictal – During a seizure.
+
 Preictal – Just before a seizure.
+
 Interictal – Between seizures.
 
 ### Time and Frequency Domain Signals
 
 Time-domain signals represent EEG activity over time.
-Frequency-domain signals show how signal components are distributed in different frequency bands, obtained using Fast Fourier Transform (FFT).
-Frequency-domain signals often highlight patterns that are difficult to detect in time-domain signals.
+
+Frequency-domain signals show how signal components are distributed in different frequency bands, obtained using Fast Fourier Transform (FFT).Frequency-domain signals often highlight patterns that are difficult to detect in time-domain signals.
 
 ### Performance Evaluation
 
