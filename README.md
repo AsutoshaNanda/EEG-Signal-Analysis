@@ -294,4 +294,4 @@ For EEG, you typically:
 
 ---
 
-# Phase 3
+# PHASE-3
