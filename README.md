@@ -1,7 +1,5 @@
 ## PHASE-1
 
-
-
 ## Introduction
 
 Epilepsy is a common neurological disorder that affects approximately 50 million people worldwide. It is characterized by sudden seizures that can be life-threatening. EEG (Electroencephalography) is commonly used to diagnose epilepsy by monitoring brain activity. However, EEG recordings require expert analysis, making the process slow and tedious.
