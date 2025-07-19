@@ -10,6 +10,16 @@ This study examines different representations of EEG signals—**time-domain** a
 
 * **Freiburg Database** (Intracranial EEG)
 * **CHB-MIT Database** (Scalp EEG)
+ 
+---
+
+### About Seizures
+
+A seizure is an abnormal burst of electrical activity in the brain, which can lead to changes in behavior, movements, feelings, or consciousness. Seizures can vary in severity and duration, ranging from brief lapses in awareness to prolonged convulsions. For individuals with epilepsy, predicting seizures can make a world of difference by enabling timely interventions, such as administering medication or moving to a safe environment.
+
+
+
+Epilepsy affects millions of people worldwide, and despite advancements in treatment, many patients continue to experience seizures. The unpredictability of seizures is one of the most challenging aspects of epilepsy, underscoring the importance of accurate and reliable prediction methods.
 
 ---
 
@@ -56,7 +66,7 @@ The study used three evaluation metrics:
 ---
 
 ## PHASE-2
-### Feature Extraction
+### Feature Extraction : Frequency Features
 ---
 ### Power Spectral Density (PSD) 
 
@@ -293,5 +303,44 @@ For EEG, you typically:
 * Analyze or plot the energy at each level (each corresponds to a frequency range)
 
 ---
+### Feature Extraction : Time Features
+---
+### Statistical Features
+1. **Mean**: Represents the average amplitude of the EEG signal over a specific time window.
+2. **Standard Deviation (SD)**: Measures the variability or dispersion of the signal amplitudes.
+3. **Variance (var)**: Quantifies the spread of the signal amplitudes.
+4. **Maximum (max)**: The highest amplitude value in the signal.
+5. **Minimum (min)**: The lowest amplitude value in the signal.
+6. **Peak-to-Peak (ptp)**: Difference between the maximum and minimum values.
+7. **Skewness (skew)**: Measures the asymmetry of the signal distribution.
+8. **Kurtosis (kurt)**: Indicates the "tailedness" of the signal distribution.
+9. **Zero Crossings (zcross)**: Counts the number of times the signal crosses zero.
+10. **Energy**: Represents the total power of the signal.
+11. **Root Mean Square (RMS)**: A measure of the signal's magnitude.
 
-## PHASE-3
+### Hjorth Parameters
+12. **Activity**: Represents the variance of the signal, indicating signal power.
+13. **Mobility**: Measures the frequency content of the signal by comparing the variance of the first derivative to the original signal.
+14. **Complexity**: Indicates the structural complexity of the signal by comparing second and first derivative mobilities.
+
+### Temporal Features
+15. **Line Length**: Sum of absolute differences between consecutive points, representing signal variability.
+
+---
+### EEG Channels
+Features are extracted for the following channels:
+- FP1-F7, C3-P3, C4-P4, CZ-PZ, F3-C3, F4-C4, F7-T7, F8-T8, FP1-F3, FP2-F4, FP2-F8, FT10-T8, FT9-FT10, FZ-CZ, P3-O1, P4-O2, P7-O1, P7-T7, P8-O2, T7-FT9, T7-P7, T8-P8-0, T8-P8-1
+
+For each channel, the above features are computed and used for analysis.
+
+## Time Series Analysis
+EEG signals are inherently time-series data, capturing temporal patterns of brain activity. The analysis of time series involves:
+
+- **Segmentation**: Dividing the continuous EEG signals into smaller time windows.
+- **Feature Computation**: Calculating statistical features (mean, SD, variance, etc.) for each segment.
+- **Sequence Construction**: Representing the EEG data as a sequence of statistical features over time.
+
+This approach helps in identifying patterns that could predict seizures.
+
+---
+
