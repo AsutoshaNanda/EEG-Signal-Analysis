@@ -327,7 +327,7 @@ For EEG, you typically:
 ---
 ### EEG Channels
 Features are extracted for the following channels:
-- FP1-F7, C3-P3, C4-P4, CZ-PZ, F3-C3, F4-C4, F7-T7, F8-T8, FP1-F3, FP2-F4, FP2-F8, FT10-T8, FT9-FT10, FZ-CZ, P3-O1, P4-O2, P7-O1, P7-T7, P8-O2, T7-FT9, T7-P7, T8-P8-0, T8-P8-1
+- **FP1-F7, C3-P3, C4-P4, CZ-PZ, F3-C3, F4-C4, F7-T7, F8-T8, FP1-F3, FP2-F4, FP2-F8, FT10-T8, FT9-FT10, FZ-CZ, P3-O1, P4-O2, P7-O1, P7-T7, P8-O2, T7-FT9, T7-P7, T8-P8-0, T8-P8-1**
 
 For each channel, the above features are computed and used for analysis.
 
@@ -342,3 +342,11 @@ This approach helps in identifying patterns that could predict seizures.
 
 ---
 
+## PHASE-3
+### Models Used
+---
+To classify and predict seizures, multiple machine learning models are employed. Each model is trained on features extracted from both the time and frequency domains, leveraging different characteristics of the EEG signal for improved performance.
+
+#### K-Nearest Neighbors (KNN)
+* **Simple and effective** for classifying EEG patterns, especially with small or low-dimensional datasets.
+* **Non-parametric**, so it doesn’t assume any distribution of the data.
