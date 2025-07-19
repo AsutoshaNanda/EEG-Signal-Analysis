@@ -347,6 +347,6 @@ This approach helps in identifying patterns that could predict seizures.
 ---
 To classify and predict seizures, multiple machine learning models are employed. Each model is trained on features extracted from both the time and frequency domains, leveraging different characteristics of the EEG signal for improved performance.
 
-#### K-Nearest Neighbors (KNN)
+#### 1. K-Nearest Neighbors (KNN)
 * **Simple and effective** for classifying EEG patterns, especially with small or low-dimensional datasets.
 * **Non-parametric**, so it doesn’t assume any distribution of the data.
