@@ -56,14 +56,13 @@ The study used three evaluation metrics:
 ---
 
 ## PHASE-2
-
-
-
-## Power Spectral Density (PSD) in EEG Analysis
+### Feature Extraction
+---
+### Power Spectral Density (PSD) 
 
 **Power Spectral Density (PSD)** represents the distribution of power across different frequency components in a signal. It provides insight into how the power of an EEG signal is distributed over frequency, making it a crucial tool for analyzing brain activity.
 
-
+---
 
 ### Why PSD is Used in EEG?
 
@@ -90,3 +89,209 @@ We will be using **Welch’s Method**, which is a technique used in EEG analysis
 Instead of analyzing the entire EEG signal at once (which can be noisy), Welch’s Method breaks the signal into smaller overlapping segments. For each segment, it calculates a power estimate, then averages all these estimates together. This reduces noise and gives a smoother and more reliable PSD result.
 
 ---
+
+
+## Dominant Frequency 
+
+**Dominant Frequency** refers to the most prominent (i.e., highest power) frequency component within a given EEG signal segment. In other words, it's the frequency at which the brain's electrical activity is most active over a specific period and region.
+
+##  Significance of Dominant Frequency
+
+* **Quantifies the core oscillatory activity** of each brain region.
+* **Fast way to summarize brain activity** without diving into full PSD analysis.
+* Useful for both **clinical diagnostics** and **cognitive research**.
+* Can track **brain state transitions** in real-time EEG recordings.
+
+---
+
+##  Welch’s Method in Dominant Frequency
+
+The **Welch method** is used to estimate the **Power Spectral Density (PSD)** of EEG signals. This is key to finding the dominant frequency.
+
+###  Why Welch’s Method?
+
+*  Reduces noise in the spectrum
+*  Gives a smooth estimate of the PSD
+*  Well-suited for EEG signals which are noisy and non-stationary
+
+### 🔧 How It Works :
+
+1. Split the EEG signal into overlapping segments
+2. Apply a window function (like Hamming)
+3. Compute FFT for each segment
+4. Average the power spectra
+
+From this, the **frequency with the highest PSD value** is extracted — that’s your **dominant frequency**.
+
+---
+
+## Entropy
+
+## What is Entropy in EEG?
+
+Entropy is a mathematical measure of randomness or uncertainty in a signal. In the context of EEG analysis, entropy helps quantify how complex or unpredictable brain activity is over time.
+
+An EEG signal with:
+- **Low entropy** indicates regular, predictable patterns (e.g., sleep, unconsciousness)
+- **High entropy** reflects irregular, complex patterns (e.g., alertness, cognitive engagement)
+
+Entropy metrics are particularly valuable in neuroscience because they capture dynamic brain behaviors that traditional frequency-based methods (like Fourier transforms) may overlook.
+
+---
+
+## Why Is Entropy Used in EEG Analysis?
+
+Entropy is used in EEG research and clinical applications to assess brain function and identify abnormalities. Some key use cases include:
+
+- **Sleep staging**: Differentiating REM and non-REM stages based on signal complexity.
+- **Seizure detection**: Entropy often drops before and during epileptic seizures.
+- **Cognitive workload monitoring**: Increased mental activity typically correlates with higher entropy.
+- **Neurodegenerative disorders**: Diseases like Alzheimer's often show reduced signal complexity.
+
+Because entropy captures subtle non-linear characteristics of brain signals, it provides insight beyond conventional power spectral or amplitude-based measures.
+
+---
+
+## Significance of Entropy in EEG
+
+Entropy-based analysis is significant for several reasons:
+
+1. **Non-linear insight**: EEG signals are non-stationary and often non-linear. Entropy effectively captures this complexity.
+2. **Robust to noise**: Entropy measures are more resilient to artifacts than raw amplitude or power analysis.
+3. **Channel-wise comparison**: Entropy can be computed independently for each EEG channel, enabling spatial brain mapping.
+4. **Real-time use**: Entropy can be computed on-the-fly for applications in brain-computer interfaces and alertness monitoring.
+
+---
+
+## Shannon Entropy
+
+### What is Shannon Entropy?
+
+Shannon Entropy quantifies the average amount of information or uncertainty in a signal. For a discrete probability distribution of values in a signal, it is defined as: 
+`H = -Σ (p_i * log2(p_i))`
+
+---
+## Band Power 
+
+## What is Band Power in EEG?
+
+**Band power** refers to the total amount of energy (or power) present in an EEG signal within a specific frequency range (or band). EEG signals are made up of different frequency components, and these are grouped into **standard brainwave bands**:
+
+| Band  | Frequency Range (Hz) | Associated Mental State          |
+| ----- | -------------------- | -------------------------------- |
+| Delta | 0.5 – 4              | Deep sleep                       |
+| Theta | 4 – 8                | Drowsiness, meditation           |
+| Alpha | 8 – 13               | Relaxed wakefulness, eyes closed |
+| Beta  | 13 – 30              | Alertness, concentration         |
+| Gamma | 30 – 100             | High-level cognition, attention  |
+
+**Band power analysis** computes how much power is concentrated in each of these bands, helping you understand the dominant mental state or activity of the brain.
+
+---
+
+## Why is Band Power Analysis Important in EEG?
+
+Band power is one of the **most practical and interpretable features** in EEG analysis. Here's why it's commonly used:
+
+1. **Quick summary of mental state**:
+   Instead of analyzing the entire raw EEG waveform, we extract meaningful features that relate to known cognitive or physiological states.
+
+2. **Used in medical and research settings**:
+
+   * Sleep staging
+   * Seizure detection
+   * Brain-computer interfaces (BCIs)
+   * Meditation and neurofeedback training
+   * Detecting cognitive load or attention changes
+
+3. **Foundational for machine learning and diagnostics**:
+   Band power values are frequently used as **input features** for classification tasks (e.g., predicting alertness or mental fatigue).
+
+---
+
+## How is Band Power Computed?
+
+We use the following general steps for **each EEG channel**:
+
+1. **Compute PSD** using Welch’s method.
+2. **For each frequency band (e.g., Theta 4–8 Hz)**:
+
+   * Integrate the PSD within that band.
+   * This gives you the **average power** in that frequency range.
+
+This process is repeated across all bands and all channels, resulting in a matrix of values:
+**\[Channel × Frequency Band] = Power**
+
+---
+
+## Welch’s Method
+
+To compute the Power Spectral Density (PSD), we use **Welch’s method**, which is a common and reliable technique.
+
+### Why Welch's Method?
+
+* Reduces noise by averaging over segments
+* Produces smooth, reliable power estimates
+* Works well with non-stationary signals like EEG
+
+### Summary of Welch's Method:
+
+* EEG signal is split into overlapping segments
+* Each segment is windowed (e.g., with a Hamming window)
+* FFT is applied to each segment
+* The power spectra are averaged
+
+Then the power values within each EEG band are **integrated (summed or averaged)** to get the **band power**.
+
+---
+
+## Wavelet Transform 
+
+## What is Wavelet Transform in EEG?
+
+A **wavelet transform** is a mathematical technique that breaks a signal down into both **time** and **frequency** components. Unlike traditional Fourier-based methods (like PSD), which only show *what frequencies are present*, wavelet transforms also tell you **when** those frequencies occur.
+
+This is crucial in EEG analysis because EEG signals are **non-stationary** — their frequency content **changes over time**. For example, a burst of alpha activity may only last for a few seconds during a recording, and we want to detect exactly *when* and *where* it happens.
+
+---
+
+## Why Use Wavelet Transform in EEG?
+
+Wavelet transforms are widely used in EEG because they:
+
+1. **Handle non-stationary signals well**
+   EEG signals often contain short-lived events (e.g., spikes, bursts, artifacts). Wavelets can detect these because they provide **time-localized frequency information**.
+
+2. **Capture both time and frequency**
+   Unlike PSD (which gives global frequency info), wavelets give **localized power over time** — i.e., frequency vs. time maps.
+
+3. **Enable event-based analysis**
+   Especially useful for:
+
+   * Detecting seizures
+   * Monitoring brain responses to stimuli
+   * Real-time analysis of dynamic brain states
+
+4. **Provide multiresolution analysis**
+   Low frequencies are analyzed with high temporal width, and high frequencies with fine time precision — a perfect match for EEG’s structure.
+
+---
+
+## How Wavelet Transform Works 
+
+Wavelet transform breaks down a signal using small wave-like functions (called wavelets) that are **scaled and shifted** over the signal.
+
+There are two main types:
+
+* **DWT (Discrete Wavelet Transform)**: Breaks signal into approximation and detail coefficients at various levels.
+* **CWT (Continuous Wavelet Transform)**: Produces a full time-frequency representation, ideal for visualization.
+
+For EEG, you typically:
+
+* Choose a wavelet (e.g., `db4`, `sym5`, `morl`)
+* Decompose the EEG signal into levels
+* Analyze or plot the energy at each level (each corresponds to a frequency range)
+
+---
+
+# Phase 3
